@@ -1,16 +1,24 @@
 import _ from 'lodash';
 import './style.css';
 import printMe from './print.js';
+import folderSelector from './folderSelector.js';
 
 function component() {
+  const textbox = folderSelector;
+  const baseElement = document.createElement('div'); 
+
+  baseElement.setAttribute('class','flex-box')
+
   const element = document.createElement('div');
   const btn = document.createElement('button');
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  btn.innerHTML = 'Click me and check the console!';
+
+  btn.innerHTML = 'Run Audit!';
   btn.onclick = printMe;
 
-  element.appendChild(btn);
+
+  baseElement.appendChild(textbox);
+  baseElement.appendChild(btn);
+  element.appendChild(baseElement);
   return element;
 }
 
